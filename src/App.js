@@ -70,19 +70,30 @@ class App extends Component {
   //   });
   // }
 
-  // version 2: .map, iusing a shorthand to copy values out of the original
+  // // version 2: .map, iusing a shorthand to copy values out of the original
+  // _incrementScoreById(id) {
+  //   // find the player in this.state.scores
+  //   // increment their scores
+  //   const newScores = this.state.scores.map(bruce => {
+  //     if (bruce.id !== id) {
+  //       return bruce;
+  //     } else {
+  //       return {
+  //         ...bruce,
+  //         score: bruce.score + 1
+  //       };
+  //     }
+  //   });
+  //   // and call this.setState
+  //   this.setState({
+  //     scores: newScores
+  //   });
+  // }
+
+  // version 3: .map, object copy
   _incrementScoreById(id) {
-    // find the player in this.state.scores
-    // increment their scores
-    const newScores = this.state.scores.map(bruce => {
-      if (bruce.id !== id) {
-        return bruce;
-      } else {
-        return {
-          ...bruce,
-          score: bruce.score + 1
-        };
-      }
+    const newScores = this.state.scores.map(bob => {
+      return bob.id !== id ? bob : { ...bob, score: bob.score + 1 };
     });
     // and call this.setState
     this.setState({
